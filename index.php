@@ -44,6 +44,9 @@
 				if($ut == "GUEST")
 					forbid();
 				break;
+			case "/logout":
+				$rList[] = "app/exit.php";
+				break;
 		}
 					
 		$rList = array_unique($rList);
