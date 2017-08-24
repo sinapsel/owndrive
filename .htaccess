@@ -1,0 +1,33 @@
+php_value display_errors 1
+php_value error_reporting 6143
+AddDefaultCharset utf-8
+AddCharset utf-8 *
+<IfModule mod_charset.c>
+    CharsetSourceEnc utf-8
+    CharsetDefault utf-8
+</IfModule>
+ 
+ErrorDocument 404 /err/404.htm
+php_flag last_modified 1
+AddType application/x-httpd-php .php
+DirectoryIndex index.php
+ErrorDocument 403 /err/403.htm
+ErrorDocument 500 /err/500.htm
+Options  +ExecCGI
+# compress text, html, javascript, css, xml:
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
+ 
+
+
+
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.php$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.php [L]
+</IfModule>
